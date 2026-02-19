@@ -20,33 +20,45 @@ class BibleRepository @Inject constructor(
         val cached = bookDao.getAllBooks()
         if (cached.isNotEmpty()) return cached
 
-        val remote = api.getBooks()
-        val entities = remote.map { dto ->
-            BookEntity(
-                bookId = dto.bookId,
-                name = dto.name,
-                chapters = dto.chapters
-            )
+        try {
+            val remote = api.getBooks()
+            val entities = remote.map { dto ->
+                BookEntity(
+                    bookId = dto.bookId,
+                    name = dto.name,
+                    chapters = dto.chapters
+                )
+            }
+            bookDao.insertBooks(entities)
+            return entities
+        } catch (e: Exception) {
+            val fallback = bookDao.getAllBooks()
+            if (fallback.isNotEmpty()) return fallback
+            throw e
         }
-        bookDao.insertBooks(entities)
-        return entities
     }
 
     suspend fun getChapterVerses(bookId: Int, chapter: Int): List<VerseEntity> {
         val cached = verseDao.getVerses(bookId, chapter)
         if (cached.isNotEmpty()) return cached
 
-        val remote = api.getChapter(bookId, chapter)
-        val entities = remote.map { dto ->
-            VerseEntity(
-                pk = dto.pk,
-                bookId = bookId,
-                chapter = chapter,
-                verse = dto.verse,
-                text = TextCleaner.clean(dto.text)
-            )
+        try {
+            val remote = api.getChapter(bookId, chapter)
+            val entities = remote.map { dto ->
+                VerseEntity(
+                    pk = dto.pk,
+                    bookId = bookId,
+                    chapter = chapter,
+                    verse = dto.verse,
+                    text = TextCleaner.clean(dto.text)
+                )
+            }
+            verseDao.insertVerses(entities)
+            return entities
+        } catch (e: Exception) {
+            val fallback = verseDao.getVerses(bookId, chapter)
+            if (fallback.isNotEmpty()) return fallback
+            throw e
         }
-        verseDao.insertVerses(entities)
-        return entities
     }
 }

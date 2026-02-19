@@ -68,13 +68,17 @@ object QuizGenerator {
     }
 
     fun checkAnswer(userAnswer: String, correctAnswer: String): Boolean {
-        return stripPunctuation(userAnswer.trim()).equals(
-            stripPunctuation(correctAnswer.trim()),
+        return removePunctuation(userAnswer.trim()).equals(
+            removePunctuation(correctAnswer.trim()),
             ignoreCase = true
         )
     }
 
     private fun stripPunctuation(word: String): String {
         return word.trimEnd { !it.isLetterOrDigit() }.trimStart { !it.isLetterOrDigit() }
+    }
+
+    private fun removePunctuation(text: String): String {
+        return text.replace(Regex("[^\\p{L}\\p{N}\\s]"), "").replace(Regex("\\s+"), " ").trim()
     }
 }

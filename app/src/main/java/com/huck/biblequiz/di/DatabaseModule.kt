@@ -24,7 +24,8 @@ object DatabaseModule {
             context,
             BibleQuizDatabase::class.java,
             "bible_quiz.db"
-        ).build()
+        ).fallbackToDestructiveMigration()
+         .build()
     }
 
     @Provides

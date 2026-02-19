@@ -1,5 +1,6 @@
 package com.huck.biblequiz.ui.screens.quiz
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,6 +45,7 @@ fun QuizScreen(
     viewModel: QuizViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
+    val timerActive = viewModel.timerSeconds > 0
 
     Scaffold(
         topBar = {
@@ -52,6 +54,21 @@ fun QuizScreen(
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Text("<", style = MaterialTheme.typography.titleLarge)
+                    }
+                },
+                actions = {
+                    if (timerActive && !state.isLoading && !state.showResult && state.questions.isNotEmpty()) {
+                        val urgent = state.timeRemaining <= 5
+                        val timerColor by animateColorAsState(
+                            targetValue = if (urgent) IncorrectRed else MaterialTheme.colorScheme.onSurface,
+                            label = "timerColor"
+                        )
+                        Text(
+                            "${state.timeRemaining}s",
+                            style = MaterialTheme.typography.titleMedium,
+                            color = timerColor,
+                            modifier = Modifier.padding(end = 16.dp)
+                        )
                     }
                 }
             )
@@ -90,11 +107,29 @@ fun QuizScreen(
                         modifier = Modifier.fillMaxWidth()
                     )
 
-                    Text(
-                        "Question ${state.currentIndex + 1} of ${state.questions.size}",
-                        style = MaterialTheme.typography.labelLarge,
-                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
-                    )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp, vertical = 8.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            "Question ${state.currentIndex + 1} of ${state.questions.size}",
+                            style = MaterialTheme.typography.labelLarge
+                        )
+
+                        if (timerActive && !state.showResult) {
+                            val fraction = state.timeRemaining.toFloat() / viewModel.timerSeconds
+                            LinearProgressIndicator(
+                                progress = fraction,
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(start = 16.dp),
+                                color = if (state.timeRemaining <= 5) IncorrectRed else MaterialTheme.colorScheme.primary
+                            )
+                        }
+                    }
 
                     Column(
                         modifier = Modifier

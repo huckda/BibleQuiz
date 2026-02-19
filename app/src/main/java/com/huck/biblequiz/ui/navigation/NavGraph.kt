@@ -18,7 +18,7 @@ object Routes {
     const val CHAPTER_SELECTION = "chapter_selection/{bookIds}"
     const val MODE_SELECTION = "mode_selection/{selections}"
     const val STUDY = "study/{selections}"
-    const val QUIZ = "quiz/{selections}"
+    const val QUIZ = "quiz/{selections}/{shuffle}/{timerSeconds}"
     const val RESULTS = "results/{score}/{total}/{selections}"
 }
 
@@ -59,7 +59,9 @@ fun NavGraph() {
             ModeSelectionScreen(
                 selections = selections,
                 onStudy = { navController.navigate("study/$selections") },
-                onQuiz = { navController.navigate("quiz/$selections") },
+                onQuiz = { shuffle, timerSeconds ->
+                    navController.navigate("quiz/$selections/$shuffle/$timerSeconds")
+                },
                 onBack = { navController.popBackStack() }
             )
         }
@@ -74,14 +76,18 @@ fun NavGraph() {
                 onBack = { navController.popBackStack() },
                 onStartQuiz = {
                     navController.popBackStack()
-                    navController.navigate("quiz/$selections")
+                    navController.navigate("quiz/$selections/true/0")
                 }
             )
         }
 
         composable(
             Routes.QUIZ,
-            arguments = listOf(navArgument("selections") { type = NavType.StringType })
+            arguments = listOf(
+                navArgument("selections") { type = NavType.StringType },
+                navArgument("shuffle") { type = NavType.BoolType },
+                navArgument("timerSeconds") { type = NavType.IntType }
+            )
         ) { backStackEntry ->
             val selections = backStackEntry.arguments?.getString("selections") ?: ""
             QuizScreen(
@@ -111,7 +117,7 @@ fun NavGraph() {
                 total = total,
                 selections = selections,
                 onRetry = {
-                    navController.navigate("quiz/$selections") {
+                    navController.navigate("quiz/$selections/true/0") {
                         popUpTo("results/$score/$total/$selections") { inclusive = true }
                     }
                 },

@@ -46,7 +46,10 @@ class BookSelectionViewModel @Inject constructor(
                 }
                 _state.value = _state.value.copy(books = books, isLoading = false)
             } catch (e: Exception) {
-                _state.value = _state.value.copy(error = e.message, isLoading = false)
+                _state.value = _state.value.copy(
+                    error = e.message ?: "Unknown error",
+                    isLoading = false
+                )
             }
         }
     }

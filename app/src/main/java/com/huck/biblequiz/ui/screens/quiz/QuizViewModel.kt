@@ -10,6 +10,8 @@ import com.huck.biblequiz.model.Verse
 import com.huck.biblequiz.util.BookNames
 import com.huck.biblequiz.util.QuizGenerator
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -24,7 +26,8 @@ data class QuizState(
     val isLoading: Boolean = true,
     val error: String? = null,
     val bookName: String = "",
-    val chapter: Int = 0
+    val chapter: Int = 0,
+    val timeRemaining: Int = 0
 ) {
     val currentQuestion: QuizQuestion? get() = questions.getOrNull(currentIndex)
     val progress: Float get() = if (questions.isEmpty()) 0f else (currentIndex + 1).toFloat() / questions.size
@@ -42,6 +45,10 @@ class QuizViewModel @Inject constructor(
     val state: StateFlow<QuizState> = _state
 
     private val selections: String = savedStateHandle.get<String>("selections") ?: ""
+    private val shuffle: Boolean = savedStateHandle.get<Boolean>("shuffle") ?: true
+    val timerSeconds: Int = savedStateHandle.get<Int>("timerSeconds") ?: 0
+
+    private var timerJob: Job? = null
 
     init {
         loadQuiz()
@@ -70,13 +77,35 @@ class QuizViewModel @Inject constructor(
                 }
 
                 _state.value = _state.value.copy(
-                    questions = allQuestions,
+                    questions = if (shuffle) allQuestions.shuffled() else allQuestions,
                     isLoading = false,
                     bookName = lastBookName,
-                    chapter = lastChapter
+                    chapter = lastChapter,
+                    timeRemaining = timerSeconds
                 )
+
+                startTimer()
             } catch (e: Exception) {
                 _state.value = _state.value.copy(error = e.message, isLoading = false)
+            }
+        }
+    }
+
+    private fun startTimer() {
+        if (timerSeconds <= 0) return
+        timerJob?.cancel()
+        _state.value = _state.value.copy(timeRemaining = timerSeconds)
+        timerJob = viewModelScope.launch {
+            var remaining = timerSeconds
+            while (remaining > 0) {
+                delay(1000)
+                remaining--
+                _state.value = _state.value.copy(timeRemaining = remaining)
+            }
+            if (!_state.value.showResult) {
+                val question = _state.value.currentQuestion ?: return@launch
+                val emptyAnswers = List(question.blanks.size) { "" }
+                submitAnswers(emptyAnswers)
             }
         }
     }
@@ -84,6 +113,8 @@ class QuizViewModel @Inject constructor(
     fun submitAnswers(answers: List<String>) {
         val question = _state.value.currentQuestion ?: return
         val idx = _state.value.currentIndex
+
+        timerJob?.cancel()
 
         var correct = _state.value.totalCorrect
         question.blanks.forEachIndexed { i, blank ->
@@ -110,6 +141,7 @@ class QuizViewModel @Inject constructor(
             currentIndex = current.currentIndex + 1,
             showResult = false
         )
+        startTimer()
         return false
     }
 
