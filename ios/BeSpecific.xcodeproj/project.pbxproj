@@ -1,0 +1,498 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		200000000000000000000001 /* BeSpecificApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000001 /* BeSpecificApp.swift */; };
+		200000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000002 /* ContentView.swift */; };
+		200000000000000000000003 /* AppRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000003 /* AppRoute.swift */; };
+		200000000000000000000004 /* BookEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000004 /* BookEntity.swift */; };
+		200000000000000000000005 /* VerseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000005 /* VerseEntity.swift */; };
+		200000000000000000000006 /* ChapterProgressEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000006 /* ChapterProgressEntity.swift */; };
+		200000000000000000000007 /* BollsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000007 /* BollsAPIService.swift */; };
+		200000000000000000000008 /* BookDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000008 /* BookDTO.swift */; };
+		200000000000000000000009 /* VerseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000009 /* VerseDTO.swift */; };
+		20000000000000000000000A /* BibleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000A /* BibleRepository.swift */; };
+		20000000000000000000000B /* ProgressRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000B /* ProgressRepository.swift */; };
+		20000000000000000000000C /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000C /* Book.swift */; };
+		20000000000000000000000D /* Verse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000D /* Verse.swift */; };
+		20000000000000000000000E /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000E /* QuizQuestion.swift */; };
+		20000000000000000000000F /* QuizResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000000F /* QuizResult.swift */; };
+		200000000000000000000010 /* QuizGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000010 /* QuizGenerator.swift */; };
+		200000000000000000000011 /* TextCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000011 /* TextCleaner.swift */; };
+		200000000000000000000012 /* BookNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000012 /* BookNames.swift */; };
+		200000000000000000000013 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000013 /* AppColors.swift */; };
+		200000000000000000000014 /* AppTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000014 /* AppTypography.swift */; };
+		200000000000000000000015 /* BookSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000015 /* BookSelectionView.swift */; };
+		200000000000000000000016 /* BookSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000016 /* BookSelectionViewModel.swift */; };
+		200000000000000000000017 /* ChapterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000017 /* ChapterSelectionView.swift */; };
+		200000000000000000000018 /* ChapterSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000018 /* ChapterSelectionViewModel.swift */; };
+		200000000000000000000019 /* ModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100000000000000000000019 /* ModeSelectionView.swift */; };
+		20000000000000000000001A /* StudyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001A /* StudyView.swift */; };
+		20000000000000000000001B /* StudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001B /* StudyViewModel.swift */; };
+		20000000000000000000001C /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001C /* QuizView.swift */; };
+		20000000000000000000001D /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001D /* QuizViewModel.swift */; };
+		20000000000000000000001E /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001E /* ResultsView.swift */; };
+		20000000000000000000001F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10000000000000000000001F /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		100000000000000000000001 /* BeSpecificApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeSpecificApp.swift; sourceTree = "<group>"; };
+		100000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		100000000000000000000003 /* AppRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRoute.swift; sourceTree = "<group>"; };
+		100000000000000000000004 /* BookEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookEntity.swift; sourceTree = "<group>"; };
+		100000000000000000000005 /* VerseEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseEntity.swift; sourceTree = "<group>"; };
+		100000000000000000000006 /* ChapterProgressEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterProgressEntity.swift; sourceTree = "<group>"; };
+		100000000000000000000007 /* BollsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BollsAPIService.swift; sourceTree = "<group>"; };
+		100000000000000000000008 /* BookDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDTO.swift; sourceTree = "<group>"; };
+		100000000000000000000009 /* VerseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerseDTO.swift; sourceTree = "<group>"; };
+		10000000000000000000000A /* BibleRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibleRepository.swift; sourceTree = "<group>"; };
+		10000000000000000000000B /* ProgressRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRepository.swift; sourceTree = "<group>"; };
+		10000000000000000000000C /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		10000000000000000000000D /* Verse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verse.swift; sourceTree = "<group>"; };
+		10000000000000000000000E /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
+		10000000000000000000000F /* QuizResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResult.swift; sourceTree = "<group>"; };
+		100000000000000000000010 /* QuizGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGenerator.swift; sourceTree = "<group>"; };
+		100000000000000000000011 /* TextCleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCleaner.swift; sourceTree = "<group>"; };
+		100000000000000000000012 /* BookNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookNames.swift; sourceTree = "<group>"; };
+		100000000000000000000013 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		100000000000000000000014 /* AppTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTypography.swift; sourceTree = "<group>"; };
+		100000000000000000000015 /* BookSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSelectionView.swift; sourceTree = "<group>"; };
+		100000000000000000000016 /* BookSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSelectionViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000017 /* ChapterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSelectionView.swift; sourceTree = "<group>"; };
+		100000000000000000000018 /* ChapterSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChapterSelectionViewModel.swift; sourceTree = "<group>"; };
+		100000000000000000000019 /* ModeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionView.swift; sourceTree = "<group>"; };
+		10000000000000000000001A /* StudyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyView.swift; sourceTree = "<group>"; };
+		10000000000000000000001B /* StudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewModel.swift; sourceTree = "<group>"; };
+		10000000000000000000001C /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		10000000000000000000001D /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
+		10000000000000000000001E /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		10000000000000000000001F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		100000000000000000000020 /* BeSpecific.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeSpecific.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		300000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000002 /* BeSpecific */,
+				300000000000000000000012 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		300000000000000000000012 = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000020 /* BeSpecific.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		300000000000000000000002 = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000001 /* BeSpecificApp.swift */,
+				100000000000000000000002 /* ContentView.swift */,
+				10000000000000000000001F /* Assets.xcassets */,
+				30000000000000000000000A /* Navigation */,
+				300000000000000000000004 /* Data */,
+				300000000000000000000003 /* Models */,
+				300000000000000000000008 /* Utilities */,
+				300000000000000000000009 /* Theme */,
+				30000000000000000000000B /* Views */,
+			);
+			path = BeSpecific;
+			sourceTree = "<group>";
+		};
+		300000000000000000000003 = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000000C /* Book.swift */,
+				10000000000000000000000D /* Verse.swift */,
+				10000000000000000000000E /* QuizQuestion.swift */,
+				10000000000000000000000F /* QuizResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		300000000000000000000004 = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000005 /* Local */,
+				300000000000000000000006 /* Remote */,
+				300000000000000000000007 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		300000000000000000000005 = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000004 /* BookEntity.swift */,
+				100000000000000000000005 /* VerseEntity.swift */,
+				100000000000000000000006 /* ChapterProgressEntity.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		300000000000000000000006 = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000007 /* BollsAPIService.swift */,
+				100000000000000000000008 /* BookDTO.swift */,
+				100000000000000000000009 /* VerseDTO.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		300000000000000000000007 = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000000A /* BibleRepository.swift */,
+				10000000000000000000000B /* ProgressRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		300000000000000000000008 = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000010 /* QuizGenerator.swift */,
+				100000000000000000000011 /* TextCleaner.swift */,
+				100000000000000000000012 /* BookNames.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		300000000000000000000009 = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000013 /* AppColors.swift */,
+				100000000000000000000014 /* AppTypography.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000A = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000003 /* AppRoute.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000B = {
+			isa = PBXGroup;
+			children = (
+				30000000000000000000000C /* BookSelection */,
+				30000000000000000000000D /* ChapterSelection */,
+				30000000000000000000000E /* ModeSelection */,
+				30000000000000000000000F /* Study */,
+				300000000000000000000010 /* Quiz */,
+				300000000000000000000011 /* Results */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000C = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000015 /* BookSelectionView.swift */,
+				100000000000000000000016 /* BookSelectionViewModel.swift */,
+			);
+			path = BookSelection;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000D = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000017 /* ChapterSelectionView.swift */,
+				100000000000000000000018 /* ChapterSelectionViewModel.swift */,
+			);
+			path = ChapterSelection;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000E = {
+			isa = PBXGroup;
+			children = (
+				100000000000000000000019 /* ModeSelectionView.swift */,
+			);
+			path = ModeSelection;
+			sourceTree = "<group>";
+		};
+		30000000000000000000000F = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000001A /* StudyView.swift */,
+				10000000000000000000001B /* StudyViewModel.swift */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
+		300000000000000000000010 = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000001C /* QuizView.swift */,
+				10000000000000000000001D /* QuizViewModel.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		300000000000000000000011 = {
+			isa = PBXGroup;
+			children = (
+				10000000000000000000001E /* ResultsView.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		400000000000000000000002 /* BeSpecific */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40000000000000000000000B /* Build configuration list for PBXNativeTarget "BeSpecific" */;
+			buildPhases = (
+				400000000000000000000003 /* Sources */,
+				400000000000000000000004 /* Frameworks */,
+				400000000000000000000005 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeSpecific;
+			productName = BeSpecific;
+			productReference = 100000000000000000000020 /* BeSpecific.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		400000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 40000000000000000000000A /* Build configuration list for PBXProject "BeSpecific" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 300000000000000000000001;
+			productRefGroup = 300000000000000000000012 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				400000000000000000000002 /* BeSpecific */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		400000000000000000000005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20000000000000000000001F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		400000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				200000000000000000000001 /* BeSpecificApp.swift in Sources */,
+				200000000000000000000002 /* ContentView.swift in Sources */,
+				200000000000000000000003 /* AppRoute.swift in Sources */,
+				200000000000000000000004 /* BookEntity.swift in Sources */,
+				200000000000000000000005 /* VerseEntity.swift in Sources */,
+				200000000000000000000006 /* ChapterProgressEntity.swift in Sources */,
+				200000000000000000000007 /* BollsAPIService.swift in Sources */,
+				200000000000000000000008 /* BookDTO.swift in Sources */,
+				200000000000000000000009 /* VerseDTO.swift in Sources */,
+				20000000000000000000000A /* BibleRepository.swift in Sources */,
+				20000000000000000000000B /* ProgressRepository.swift in Sources */,
+				20000000000000000000000C /* Book.swift in Sources */,
+				20000000000000000000000D /* Verse.swift in Sources */,
+				20000000000000000000000E /* QuizQuestion.swift in Sources */,
+				20000000000000000000000F /* QuizResult.swift in Sources */,
+				200000000000000000000010 /* QuizGenerator.swift in Sources */,
+				200000000000000000000011 /* TextCleaner.swift in Sources */,
+				200000000000000000000012 /* BookNames.swift in Sources */,
+				200000000000000000000013 /* AppColors.swift in Sources */,
+				200000000000000000000014 /* AppTypography.swift in Sources */,
+				200000000000000000000015 /* BookSelectionView.swift in Sources */,
+				200000000000000000000016 /* BookSelectionViewModel.swift in Sources */,
+				200000000000000000000017 /* ChapterSelectionView.swift in Sources */,
+				200000000000000000000018 /* ChapterSelectionViewModel.swift in Sources */,
+				200000000000000000000019 /* ModeSelectionView.swift in Sources */,
+				20000000000000000000001A /* StudyView.swift in Sources */,
+				20000000000000000000001B /* StudyViewModel.swift in Sources */,
+				20000000000000000000001C /* QuizView.swift in Sources */,
+				20000000000000000000001D /* QuizViewModel.swift in Sources */,
+				20000000000000000000001E /* ResultsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		400000000000000000000004 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		400000000000000000000006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		400000000000000000000007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		400000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Be Specific";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huck.BeSpecific;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		400000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Be Specific";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huck.BeSpecific;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40000000000000000000000A /* Build configuration list for PBXProject "BeSpecific" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400000000000000000000006 /* Debug */,
+				400000000000000000000007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40000000000000000000000B /* Build configuration list for PBXNativeTarget "BeSpecific" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400000000000000000000008 /* Debug */,
+				400000000000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 400000000000000000000001 /* Project object */;
+}
