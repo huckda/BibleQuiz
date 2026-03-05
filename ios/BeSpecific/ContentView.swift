@@ -99,23 +99,5 @@ struct ContentView: View {
             }
         }
         .tint(theme.primary)
-        .task {
-            await downloadBibleInBackground()
-        }
-    }
-
-    private func downloadBibleInBackground() async {
-        guard !BibleDownloadPrefs.isFullyDownloaded else { return }
-        do {
-            let books = try await bibleRepository.getBooks()
-            for book in books {
-                for chapter in 1...book.chapters {
-                    try? await bibleRepository.getChapterVerses(bookId: book.bookId, chapter: chapter)
-                }
-            }
-            BibleDownloadPrefs.isFullyDownloaded = true
-        } catch {
-            // Will retry on next launch
-        }
     }
 }
