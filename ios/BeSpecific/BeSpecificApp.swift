@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct BeSpecificApp: App {
     let modelContainer: ModelContainer
+    @StateObject private var theme = ThemeSettings()
 
     init() {
         do {
@@ -26,6 +27,7 @@ struct BeSpecificApp: App {
                 bibleRepository: bibleRepo,
                 progressRepository: progressRepo
             )
+            .environmentObject(theme)
         }
         .modelContainer(modelContainer)
     }

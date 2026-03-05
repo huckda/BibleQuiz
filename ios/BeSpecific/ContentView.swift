@@ -4,6 +4,7 @@ struct ContentView: View {
     @State private var path = NavigationPath()
     let bibleRepository: BibleRepository
     let progressRepository: ProgressRepository
+    @EnvironmentObject var theme: ThemeSettings
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -11,6 +12,9 @@ struct ContentView: View {
                 viewModel: BookSelectionViewModel(bibleRepository: bibleRepository),
                 onBooksSelected: { bookIds in
                     path.append(AppRoute.chapterSelection(bookIds: bookIds))
+                },
+                onSettings: {
+                    path.append(AppRoute.settings)
                 }
             )
             .navigationDestination(for: AppRoute.self) { route in
@@ -86,10 +90,32 @@ struct ContentView: View {
                         }
                     )
 
+                case .settings:
+                    SettingsView()
+
                 case .bookSelection:
                     EmptyView()
                 }
             }
+        }
+        .tint(theme.primary)
+        .task {
+            await downloadBibleInBackground()
+        }
+    }
+
+    private func downloadBibleInBackground() async {
+        guard !BibleDownloadPrefs.isFullyDownloaded else { return }
+        do {
+            let books = try await bibleRepository.getBooks()
+            for book in books {
+                for chapter in 1...book.chapters {
+                    try? await bibleRepository.getChapterVerses(bookId: book.bookId, chapter: chapter)
+                }
+            }
+            BibleDownloadPrefs.isFullyDownloaded = true
+        } catch {
+            // Will retry on next launch
         }
     }
 }

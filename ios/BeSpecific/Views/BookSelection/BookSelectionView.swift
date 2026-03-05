@@ -3,6 +3,7 @@ import SwiftUI
 struct BookSelectionView: View {
     @Bindable var viewModel: BookSelectionViewModel
     let onBooksSelected: ([Int]) -> Void
+    let onSettings: () -> Void
 
     private let columns = [GridItem(.adaptive(minimum: 100), spacing: 8)]
 
@@ -49,7 +50,14 @@ struct BookSelectionView: View {
                 }
             }
         }
-        .navigationTitle("Select Books")
+        .navigationTitle("Be Specific")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: onSettings) {
+                    Image(systemName: "gearshape")
+                }
+            }
+        }
         .safeAreaInset(edge: .bottom) {
             if !viewModel.selectedBookIds.isEmpty {
                 Button {
