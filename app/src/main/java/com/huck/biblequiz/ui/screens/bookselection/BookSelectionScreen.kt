@@ -12,15 +12,20 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedCard
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -32,14 +37,26 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.huck.biblequiz.model.Book
 import com.huck.biblequiz.model.Testament
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookSelectionScreen(
     onBooksSelected: (List<Int>) -> Unit,
+    onSettings: () -> Unit,
     viewModel: BookSelectionViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
     Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Be Specific") },
+                actions = {
+                    IconButton(onClick = onSettings) {
+                        Icon(Icons.Default.Settings, contentDescription = "Settings")
+                    }
+                }
+            )
+        },
         bottomBar = {
             if (state.selectedBookIds.isNotEmpty()) {
                 Button(
@@ -84,14 +101,6 @@ fun BookSelectionScreen(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                     modifier = Modifier.padding(padding)
                 ) {
-                    item(span = { GridItemSpan(maxLineSpan) }) {
-                        Text(
-                            "Select Books",
-                            style = MaterialTheme.typography.headlineLarge,
-                            modifier = Modifier.padding(bottom = 8.dp, top = 8.dp)
-                        )
-                    }
-
                     item(span = { GridItemSpan(maxLineSpan) }) {
                         Text(
                             "Old Testament",

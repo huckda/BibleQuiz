@@ -11,7 +11,9 @@ import com.huck.biblequiz.ui.screens.chapterselection.ChapterSelectionScreen
 import com.huck.biblequiz.ui.screens.modeselection.ModeSelectionScreen
 import com.huck.biblequiz.ui.screens.quiz.QuizScreen
 import com.huck.biblequiz.ui.screens.results.ResultsScreen
+import com.huck.biblequiz.ui.screens.settings.SettingsScreen
 import com.huck.biblequiz.ui.screens.study.StudyScreen
+import com.huck.biblequiz.ui.theme.ThemeViewModel
 
 object Routes {
     const val BOOK_SELECTION = "book_selection"
@@ -20,10 +22,11 @@ object Routes {
     const val STUDY = "study/{selections}"
     const val QUIZ = "quiz/{selections}/{shuffle}/{timerSeconds}"
     const val RESULTS = "results/{score}/{total}/{selections}"
+    const val SETTINGS = "settings"
 }
 
 @Composable
-fun NavGraph() {
+fun NavGraph(themeViewModel: ThemeViewModel) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = Routes.BOOK_SELECTION) {
@@ -33,7 +36,8 @@ fun NavGraph() {
                 onBooksSelected = { bookIds ->
                     val encoded = bookIds.joinToString(",")
                     navController.navigate("chapter_selection/$encoded")
-                }
+                },
+                onSettings = { navController.navigate(Routes.SETTINGS) }
             )
         }
 
@@ -131,6 +135,13 @@ fun NavGraph() {
                         popUpTo(0) { inclusive = true }
                     }
                 }
+            )
+        }
+
+        composable(Routes.SETTINGS) {
+            SettingsScreen(
+                themeViewModel = themeViewModel,
+                onBack = { navController.popBackStack() }
             )
         }
     }
