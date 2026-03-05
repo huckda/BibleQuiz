@@ -8,7 +8,6 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.huck.biblequiz.ui.screens.bookselection.BookSelectionScreen
 import com.huck.biblequiz.ui.screens.chapterselection.ChapterSelectionScreen
-import com.huck.biblequiz.ui.screens.download.DownloadScreen
 import com.huck.biblequiz.ui.screens.modeselection.ModeSelectionScreen
 import com.huck.biblequiz.ui.screens.quiz.QuizScreen
 import com.huck.biblequiz.ui.screens.results.ResultsScreen
@@ -17,7 +16,6 @@ import com.huck.biblequiz.ui.screens.study.StudyScreen
 import com.huck.biblequiz.ui.theme.ThemeViewModel
 
 object Routes {
-    const val DOWNLOAD = "download"
     const val BOOK_SELECTION = "book_selection"
     const val CHAPTER_SELECTION = "chapter_selection/{bookIds}"
     const val MODE_SELECTION = "mode_selection/{selections}"
@@ -31,17 +29,7 @@ object Routes {
 fun NavGraph(themeViewModel: ThemeViewModel) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Routes.DOWNLOAD) {
-
-        composable(Routes.DOWNLOAD) {
-            DownloadScreen(
-                onComplete = {
-                    navController.navigate(Routes.BOOK_SELECTION) {
-                        popUpTo(Routes.DOWNLOAD) { inclusive = true }
-                    }
-                }
-            )
-        }
+    NavHost(navController = navController, startDestination = Routes.BOOK_SELECTION) {
 
         composable(Routes.BOOK_SELECTION) {
             BookSelectionScreen(
