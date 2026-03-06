@@ -14,7 +14,7 @@ enum QuizGenerator {
     }
 
     private static func generateQuestion(_ verse: Verse) -> QuizQuestion? {
-        let words = verse.text.components(separatedBy: .whitespaces).filter { !$0.isEmpty }
+        let words = TextCleaner.clean(verse.text).components(separatedBy: .whitespaces).filter { !$0.isEmpty }
         guard words.count >= 3 else { return nil }
 
         let blankCount: Int

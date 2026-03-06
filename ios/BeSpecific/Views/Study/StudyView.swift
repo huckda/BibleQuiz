@@ -21,7 +21,7 @@ struct StudyView: View {
                                         .font(AppTypography.labelLarge)
                                         .foregroundStyle(.accent)
                                         .padding(.top, 2)
-                                    Text(verse.text)
+                                    Text(verse.text.htmlToAttributedString())
                                         .font(AppTypography.bodyLarge)
                                 }
                                 .padding(.vertical, 4)
