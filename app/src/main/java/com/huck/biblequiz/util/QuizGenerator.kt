@@ -21,7 +21,7 @@ object QuizGenerator {
     }
 
     private fun generateQuestion(verse: Verse): QuizQuestion? {
-        val words = verse.text.split("\\s+".toRegex()).filter { it.isNotBlank() }
+        val words = TextCleaner.clean(verse.text).split("\\s+".toRegex()).filter { it.isNotBlank() }
         if (words.size < 3) return null
 
         val blankCount = when {

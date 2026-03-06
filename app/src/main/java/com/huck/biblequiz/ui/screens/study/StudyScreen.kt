@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.huck.biblequiz.util.htmlToAnnotatedString
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -87,7 +88,7 @@ fun StudyScreen(
                                     modifier = Modifier.padding(top = 2.dp)
                                 )
                                 Text(
-                                    verse.text,
+                                    verse.text.htmlToAnnotatedString(),
                                     style = MaterialTheme.typography.bodyLarge
                                 )
                             }
